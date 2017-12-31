@@ -7,8 +7,8 @@
 	ignore = dirty
 [submodule "third_party/protobuf"]
 	path = third_party/protobuf
-	url = https://github.com/google/protobuf.git
-	branch = 3.0.x
+	url = https://github.com/os12/protobuf.git
+	branch = mutable
 [submodule "third_party/gflags"]
 	path = third_party/gflags
 	url = https://github.com/gflags/gflags.git
