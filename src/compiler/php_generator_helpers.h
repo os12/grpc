@@ -48,9 +48,10 @@ inline grpc::string GetPHPServiceFilename(
     const grpc::protobuf::ServiceDescriptor* service,
     const grpc::string& class_suffix) {
   std::ostringstream oss;
-  if (file->options().has_php_namespace()) {
-    oss << ReplaceAll(file->options().php_namespace(), "\\", "/");
-  } else {
+  //if (file->options().has_php_namespace()) {
+  //  oss << ReplaceAll(file->options().php_namespace(), "\\", "/");
+  //} else
+  {
     std::vector<grpc::string> tokens =
         grpc_generator::tokenize(file->package(), ".");
     for (unsigned int i = 0; i < tokens.size(); i++) {

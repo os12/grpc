@@ -44,9 +44,10 @@ grpc::string ConvertToPhpNamespace(const grpc::string& name) {
 }
 
 grpc::string PackageName(const FileDescriptor* file) {
-  if (file->options().has_php_namespace()) {
-    return file->options().php_namespace();
-  } else {
+  //if (file->options().has_php_namespace()) {
+  //  return file->options().php_namespace();
+  //} else
+  {
     return ConvertToPhpNamespace(file->package());
   }
 }
