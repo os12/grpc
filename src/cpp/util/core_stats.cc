@@ -36,7 +36,7 @@ void CoreStatsToProto(const grpc_stats_data& core, Stats* proto) {
   for (int i = 0; i < GRPC_STATS_HISTOGRAM_COUNT; i++) {
     Metric* m = proto->add_metrics();
     m->set_name(grpc_stats_histogram_name[i]);
-    Histogram* h = m->mutable_histogram();
+    Histogram* h = &m->histogram();
     for (int j = 0; j < grpc_stats_histo_buckets[i]; j++) {
       Bucket* b = h->add_buckets();
       b->set_start(grpc_stats_histo_bucket_boundaries[i][j]);
