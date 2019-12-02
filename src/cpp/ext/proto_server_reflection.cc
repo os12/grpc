@@ -68,18 +68,18 @@ Status ProtoServerReflection::ServerReflectionInfo(
           kAllExtensionNumbersOfType:
         status = GetAllExtensionNumbers(
             context, request.all_extension_numbers_of_type(),
-            response.mutable_all_extension_numbers_response());
+            &response.all_extension_numbers_response());
         break;
       case ServerReflectionRequest::MessageRequestCase::kListServices:
         status =
-            ListService(context, response.mutable_list_services_response());
+            ListService(context, &response.list_services_response());
         break;
       default:
         status = Status(StatusCode::UNIMPLEMENTED, "");
     }
 
     if (!status.ok()) {
-      FillErrorResponse(status, response.mutable_error_response());
+      FillErrorResponse(status, &response.error_response());
     }
     response.set_valid_host(request.host());
     response.set_allocated_original_request(
@@ -201,7 +201,7 @@ void ProtoServerReflection::FillFileDescriptorResponse(
   std::string data;
   file_desc->CopyTo(&file_desc_proto);
   file_desc_proto.SerializeToString(&data);
-  response->mutable_file_descriptor_response()->add_file_descriptor_proto(data);
+  response->file_descriptor_response().add_file_descriptor_proto(data);
 
   for (int i = 0; i < file_desc->dependency_count(); ++i) {
     FillFileDescriptorResponse(file_desc->dependency(i), response, seen_files);
