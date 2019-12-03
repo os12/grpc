@@ -77,7 +77,7 @@ CC_opt = $(DEFAULT_CC)
 CXX_opt = $(DEFAULT_CXX)
 LD_opt = $(DEFAULT_CC)
 LDXX_opt = $(DEFAULT_CXX)
-CPPFLAGS_opt = -O2 -Wframe-larger-than=16384
+CPPFLAGS_opt = -O2 -Wframe-larger-than=16384 -Wnounused-parameter
 DEFINES_opt = NDEBUG
 
 VALID_CONFIG_asan-trace-cmp = 1
@@ -94,17 +94,18 @@ CC_dbg = $(DEFAULT_CC)
 CXX_dbg = $(DEFAULT_CXX)
 LD_dbg = $(DEFAULT_CC)
 LDXX_dbg = $(DEFAULT_CXX)
-CPPFLAGS_dbg = -O0
+CPPFLAGS_dbg = -O0 -Wnounused-parameter
 DEFINES_dbg = _DEBUG DEBUG
 
 VALID_CONFIG_asan = 1
 REQUIRE_CUSTOM_LIBRARIES_asan = 1
-CC_asan = clang
-CXX_asan = clang++
-LD_asan = clang++
-LDXX_asan = clang++
-CPPFLAGS_asan = -O0 -fsanitize-coverage=edge,trace-pc-guard -fsanitize=address -fno-omit-frame-pointer -Wno-unused-command-line-argument -DGPR_NO_DIRECT_SYSCALLS
+CC_asan = $(DEFAULT_CC)
+CXX_asan = $(DEFAULT_CXX)
+LD_asan = $(DEFAULT_CC)
+LDXX_asan = $(DEFAULT_CXX)
+CPPFLAGS_asan = -O0 -fsanitize=address -fno-omit-frame-pointer -DGPR_NO_DIRECT_SYSCALLS -Wnounused-parameter
 LDFLAGS_asan = -fsanitize=address
+DEFINES_asan = _DEBUG DEBUG
 
 VALID_CONFIG_msan = 1
 REQUIRE_CUSTOM_LIBRARIES_msan = 1
