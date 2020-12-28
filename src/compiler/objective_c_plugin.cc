@@ -77,10 +77,6 @@ class ObjectiveCGrpcGenerator : public grpc::protobuf::compiler::CodeGenerator {
   virtual ~ObjectiveCGrpcGenerator() {}
 
  public:
-  uint64_t GetSupportedFeatures() const override {
-    return FEATURE_PROTO3_OPTIONAL;
-  }
-
   virtual bool Generate(const grpc::protobuf::FileDescriptor* file,
                         const ::std::string& parameter,
                         grpc::protobuf::compiler::GeneratorContext* context,

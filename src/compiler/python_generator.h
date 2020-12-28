@@ -44,8 +44,6 @@ class PythonGrpcGenerator : public grpc::protobuf::compiler::CodeGenerator {
   PythonGrpcGenerator(const GeneratorConfiguration& config);
   ~PythonGrpcGenerator();
 
-  uint64_t GetSupportedFeatures() const override;
-
   bool Generate(const grpc::protobuf::FileDescriptor* file,
                 const std::string& parameter,
                 grpc::protobuf::compiler::GeneratorContext* context,
